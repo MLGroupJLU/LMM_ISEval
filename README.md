@@ -20,7 +20,7 @@
 
 ## Contents
 - [Introduction](#introduction)
-- [Key Findings](#key-findings)
+- [Contribution](#contribution)
 - [Data Construction](#data-construction)
 - [Install](#install)
 - [Run Code](#run-code)
