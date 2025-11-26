@@ -22,7 +22,6 @@
 - [Introduction](#introduction)
 - [Contribution](#contribution)
 - [Data Construction](#data-construction)
-- [Install](#install)
 - [Run Code](#run-code)
 - [Citation](#citation)
 
