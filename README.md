@@ -40,19 +40,18 @@ Large Multimodal Models (LMMs) have witnessed remarkable growth, showcasing form
 
 ## Data Construction
 
-We construct **PCBench** to systematically evaluate LLMs' premise critique abilities for erroneous inputs via a structured process:  
-1. **Error Categories**: Define 4 types of premise errors to assess model capabilities in identifying flawed inputs.  
-2. **Difficulty Levels**:  
-   - Normal: From GSM8K dataset  
-   - Medium: Adapted from Chinese College Entrance Examination (OlympiadBench)  
-   - Difficult: From Omni-MATH (difficulty >6)  
-3. **Problem Variants** for each base problem (error category + difficulty):  
-   - **Original Problem**: Correct premises (baseline).  
-   - **Flawed Problem**: Intentional errors in premises (to test autonomous critique).  
-   - **Flawed Problem with Explicit Instruction**: Adds prompts to check for errors (comparative reference).  
+We construct the **ISEval-dataset** to systematically evaluate the premise-critical ability of LMMs when dealing with erroneous multimodal inputs via a structured process:
 
-**Scale**: 100 base problems per error-difficulty combination → 1,200 base problems → 3,600 problems (3 variants each).  
-Designed to analyze how error type and task complexity impact premise critique ability.
+1. **Data Sources & Synthesis**:  
+   - **Sources**: Randomly sampled from MathVision and MathVista datasets.  
+   - **Process**: Utilized few-shot prompting to drive large models to generate samples for specific error types, followed by **strict manual review** to ensure adherence to error definitions and evaluation standards.  
+2. **Error Categories**: Defines **7 distinct error types** to ensure comprehensive coverage of diverse evaluation scenarios.  
+3. **Input Variants** for each base question (designed for comparative evaluation):  
+   - **Erroneous inputs without implicit instructions** ($I_e^{-ins}$): No hints provided. Directly assesses the model's autonomous ability to identify errors and reflects inherent premise-scrutiny capability.  
+   - **Erroneous inputs with implicit instructions** ($I_e^{+ins}$): Appends a prompt ("check for premise errors"). Serves as a comparative benchmark to determine if the model possesses independent reasoning or relies on external guidance.
+
+**Scale**: 300 inputs per error type $\times$ 7 types $\to$ 2,100 base inputs $\to$ **4,200 total inputs** (2 variants each).  
+Designed to meet statistical confidence requirements and clarify the logic underlying the model's analysis.
 <p align="center" width="90%">
 <a ><img src="resources/pipeline.png" alt="construction" style="width: 60%; min-width: 500px; display: block; margin: auto;"></a>
 </p>
